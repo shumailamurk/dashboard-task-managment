@@ -1,0 +1,611 @@
+/* .dashboard-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #e5e7eb;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #536BB1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header p {
+    font-size: 1.125rem;
+    color: #4b5563;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+  
+  .card:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .card-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .card-content img {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .card-content span {
+    font-size: 0.875rem;
+    color: #1F2937;
+  }
+  
+  .card-value {
+    text-align: right;
+  }
+  
+  .value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #4B5EAA;
+  }
+  
+  .value-label {
+    font-size: 0.75rem;
+    color: #6B7280;
+  }
+  
+  .table-section {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  .task-table th,
+  .task-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .task-table th {
+    background-color: #536BB1;
+    color: #fff;
+  }
+  
+  .task-table td {
+    position: relative;
+  }
+  
+  .task-table .completed {
+    color: #16a34a;
+  }
+  
+  .task-table .pending {
+    color: #d97706;
+  }
+  
+  .task-table .overdue {
+    color: #dc2626;
+  }
+  
+  .chart-section {
+    margin-top: 2rem;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .chart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: row;
+  }
+  
+  .chart {
+    transition: all 0.7s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .half-width {
+    width: 50%;
+  }
+  
+  .chart-table {
+    width: 50%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    animation: slideIn 0.7s ease-in-out;
+  }
+  
+  .radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #1F2937;
+  }
+  
+  .radio-label input {
+    margin-right: 0.5rem;
+    accent-color: #4B5EAA;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+  
+    .chart-container {
+      flex-direction: column;
+    }
+  
+    .half-width,
+    .full-width {
+      width: 100%;
+    }
+  
+    .chart-table {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .dashboard-container {
+      padding: 1rem;
+    }
+  
+    .header h1 {
+      font-size: 1.75rem;
+    }
+  
+    .header p {
+      font-size: 1rem;
+    }
+  
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .card {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+  
+    .card-content img {
+      width: 2rem;
+      height: 2rem;
+    }
+  
+    .task-table th,
+    .task-table td {
+      padding: 6px;
+      font-size: 0.875rem;
+    }
+  
+    .chart {
+      width: 100%;
+      height: 12rem;
+    }
+  
+    .radio-group {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .dashboard-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #e5e7eb;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #536BB1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header p {
+    font-size: 1.125rem;
+    color: #4b5563;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+  
+  .card:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .card-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .card-content img {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .card-content span {
+    font-size: 0.875rem;
+    color: #1F2937;
+  }
+  
+  .card-value {
+    text-align: right;
+  }
+  
+  .value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #4B5EAA;
+  }
+  
+  .value-label {
+    font-size: 0.75rem;
+    color: #6B7280;
+  }
+  
+  .table-section {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  .task-table th,
+  .task-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .task-table th {
+    background-color: #536BB1;
+    color: #fff;
+  }
+  
+  .task-table td {
+    position: relative;
+  }
+  
+  .task-table .completed {
+    color: #16a34a;
+  }
+  
+  .task-table .pending {
+    color: #d97706;
+  }
+  
+  .task-table .overdue {
+    color: #dc2626;
+  }
+  
+  .chart-section {
+    margin-top: 2rem;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .chart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: row;
+  }
+  
+  .chart {
+    transition: all 0.7s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .pie-chart-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .pie-chart-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+  }
+  
+  .priority-ring {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: calc(100% + 30px);
+    height: calc(100% + 30px);
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .completed-ring {
+    border: 10px solid transparent;
+    border-top-color: #34C759;
+    border-right-color: #34C759;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  
+  .pending-ring {
+    border: 10px solid transparent;
+    border-top-color: #FFCC00;
+    border-right-color: transparent;
+    border-bottom-color: #FFCC00;
+    border-left-color: transparent;
+  }
+  
+  .overdue-ring {
+    border: 10px solid transparent;
+    border-top-color: transparent;
+    border-right-color: #FF3B30;
+    border-bottom-color: transparent;
+    border-left-color: #FF3B30;
+  }
+  
+  .rotate .priority-ring {
+    animation: rotateChart 1.5s ease-in-out;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .half-width {
+    width: 50%;
+  }
+  
+  .chart-table {
+    width: 50%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    animation: slideIn 0.7s ease-in-out;
+  }
+  
+  .radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #1F2937;
+  }
+  
+  .radio-label input {
+    margin-right: 0.5rem;
+    accent-color: #4B5EAA;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rotateChart {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+  
+    .chart-container {
+      flex-direction: column;
+    }
+  
+    .half-width,
+    .full-width {
+      width: 100%;
+    }
+  
+    .chart-table {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .dashboard-container {
+      padding: 1rem;
+    }
+  
+    .header h1 {
+      font-size: 1.75rem;
+    }
+  
+    .header p {
+      font-size: 1rem;
+    }
+  
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .card {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+  
+    .card-content img {
+      width: 2rem;
+      height: 2rem;
+    }
+  
+    .task-table th,
+    .task-table td {
+      padding: 6px;
+      font-size: 0.875rem;
+    }
+  
+    .chart {
+      width: 100%;
+      height: 12rem;
+    }
+  
+    .radio-group {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
